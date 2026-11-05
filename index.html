@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Decision Roulette — settle any group argument in one spin</title>
+  <meta name="description" content="A weighted spinning wheel for group decisions: best-of-3, elimination mode, fun twists, and a link that shares your exact wheel with friends." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Decision Roulette — let the wheel decide" />
+  <meta property="og:description" content="Can't agree on dinner? Build a wheel, weight the votes, spin. Share the exact wheel with one link." />
+  <meta property="og:url" content="https://gvggo.github.io/decision-roulette/" />
+  <meta property="og:image" content="https://gvggo.github.io/decision-roulette/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#0f1020" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎡</text></svg>" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="brand"><span class="logo">🎡</span><div><h1>Decision Roulette</h1><p class="tag">Settle group arguments in one spin. Weighted, fair, and a little dramatic.</p></div></div>
+  </header>
+  <main>
+    <section class="stage">
+      <div class="wheel-wrap">
+        <div class="pointer" aria-hidden="true">▼</div>
+        <canvas id="wheel" width="720" height="720" aria-label="Decision wheel"></canvas>
+        <button id="spinBtn" class="spin">SPIN</button>
+      </div>
+      <div class="card result" id="result" aria-live="polite"><p class="hint">Add options, pick a mode, hit SPIN.</p></div>
+    </section>
+    <section class="card side">
+      <h2>Mode</h2>
+      <div class="modes">
+        <button class="mode active" data-mode="single">One spin</button>
+        <button class="mode" data-mode="best3">Best of 3</button>
+        <button class="mode" data-mode="elim">Elimination</button>
+      </div>
+      <p class="hint" id="modeHint">Winner takes all.</p>
+      <label class="inline"><input type="checkbox" id="twist" /> Add a fun twist to the result</label>
+      <h2>Options <small id="count"></small></h2>
+      <ul id="list" class="list"></ul>
+      <form id="addForm" class="row">
+        <input id="newOpt" maxlength="40" placeholder="Add an option…" autocomplete="off" />
+        <button class="btn">Add</button>
+      </form>
+      <p class="hint">Weight 1–5 = how many "votes" an option gets. Bigger weight, bigger slice.</p>
+      <h2>Presets</h2>
+      <div class="row wrap" id="presets"></div>
+      <div class="row wrap actions">
+        <button class="btn primary" id="shareWheel">🔗 Share this wheel</button>
+        <button class="btn ghost" id="resetBtn">Reset</button>
+      </div>
+    </section>
+  </main>
+  <div class="toast" id="toast" hidden></div>
+  <footer>Spins use your browser's crypto random generator. Your wheel lives in this page's link and localStorage only. · <a href="https://github.com/gvggo/decision-roulette">Code</a> · <a href="https://gvggo.github.io/">More projects</a></footer>
+  <script src="logic.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
